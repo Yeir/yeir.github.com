@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Yeir&#39;s blog</title>
+  <meta name="author" content="Yeir">
+  
+  <meta name="description" content="Keep move!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Yeir&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.jpg" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Yeir&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yeir&#39;s blog</a></h1>
+  <h2><a href="/">Keep move!</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归案</a></li>
+    
+      <li><a href="">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-31T23:21:36.000Z"><a href="/2014/09/01/编程细节(一)/">9月 1 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/09/01/编程细节(一)/">编程细节(一)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="三角函数：">三角函数：</h3>
+<h4 id="前几天编程用到三角函数，一个点绕一个固定点旋转，算了很久都没有得出正确的结果，打出信息，看了一下cos的值，才想起cos函数的参数是弧度，而不是角度，反三角函数用的也是弧度。太久没有用过了，给忘记了，切记。">前几天编程用到三角函数，一个点绕一个固定点旋转，算了很久都没有得出正确的结果，打出信息，看了一下cos的值，才想起cos函数的参数是弧度，而不是角度，反三角函数用的也是弧度。太久没有用过了，给忘记了，切记。</h4>
+<p>弧度与角度的关系：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="constant">1rad</span> = 180° / n</div><div class="line"><span class="constant">1</span>° = 180rad</div></pre></td></tr></table></figure>
+
+<h3 id="优先级问题：">优先级问题：</h3>
+<p>比较大小时，都是自己宏定义<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/09/01/编程细节(一)/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-02T23:47:52.000Z"><a href="/2014/08/03/字节对齐/">8月 3 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/03/字节对齐/">字节对齐</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="1-字节对齐的解释">1.字节对齐的解释</h3>
+<p>现代计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。（来自百度）</p>
+<h3 id="2-字节对齐的作用">2.字节对齐的作用</h3>
+<p>字节对齐的作用不仅是便于cpu快速访问，同时合理的利用字节对齐可以有效地节省存储空间。</p>
+<h3 id="3-字节对齐的更改">3.字节对齐的更改</h3>
+<p>使用伪指令#pragma pack(n)，C编译器将按照n个字节对齐。<br>使用伪指令#pragma pack()，取消自定义字节对齐方式。<br>1字节对齐：attribute((packed))。</p>
+<h4 id="下面来看看例子：">下面来看看例子：</h4>
+<p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/08/03/字节对齐/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-02T10:21:36.000Z"><a href="/2014/08/02/vim-command/">8月 2 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/02/vim-command/">vim command</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Vim基本命令">Vim基本命令</h2>
+<h3 id="1-打开文件操作">1.打开文件操作</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim filename 打开文件</div><div class="line">vimdiff filenameA filenameB 比较编辑两个不同的文件</div></pre></td></tr></table></figure>
+
+<h3 id="2-存储及退出文件">2.存储及退出文件</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">:wq</span> 存文件，并且退出vi</div><div class="line">zz 存文件，并且退出vi(直接输入)</div><div class="line"><span class="symbol">:w</span> 保存文件</div><div class="line"><span class="symbol">:q</span> 退出文件</div><div class="line"><span class="symbol">:w</span> filename 写入指定文件</div><div class="line"><span class="symbol">:e</span> filename 打开文件filename进行编辑(相当于退出当前的并打开另外一个文件)</div><div class="line"><span class="symbol">:X</span> 文件加密，会提示输入密码</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/08/02/vim-command/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yeir.me">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Detail/">Detail</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/Study/">Study</a><small>1</small></li>
+  
+    <li><a href="/categories/blog/">blog</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1852509044&verifier=c6fd2b80&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Yeir
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

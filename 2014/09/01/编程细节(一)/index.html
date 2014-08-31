@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>编程细节(一) | Yeir&#39;s blog</title>
+  <meta name="author" content="Yeir">
+  
+  <meta name="description" content="Keep move!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="编程细节(一)"/>
+  <meta property="og:site_name" content="Yeir&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.jpg" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Yeir&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yeir&#39;s blog</a></h1>
+  <h2><a href="/">Keep move!</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归案</a></li>
+    
+      <li><a href="">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-31T23:21:36.000Z"><a href="/2014/09/01/编程细节(一)/">9月 1 2014</a></time>
+      
+      
+  
+    <h1 class="title">编程细节(一)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="三角函数：">三角函数：</h3>
+<h4 id="前几天编程用到三角函数，一个点绕一个固定点旋转，算了很久都没有得出正确的结果，打出信息，看了一下cos的值，才想起cos函数的参数是弧度，而不是角度，反三角函数用的也是弧度。太久没有用过了，给忘记了，切记。">前几天编程用到三角函数，一个点绕一个固定点旋转，算了很久都没有得出正确的结果，打出信息，看了一下cos的值，才想起cos函数的参数是弧度，而不是角度，反三角函数用的也是弧度。太久没有用过了，给忘记了，切记。</h4>
+<p>弧度与角度的关系：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="constant">1rad</span> = 180° / n</div><div class="line"><span class="constant">1</span>° = 180rad</div></pre></td></tr></table></figure>
+
+<h3 id="优先级问题：">优先级问题：</h3>
+<p>比较大小时，都是自己宏定义<br><a id="more"></a></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#<span class="keyword">define</span> MAX(a, b) a &gt; b ? a : b </span></div><div class="line"><span class="preprocessor">#<span class="keyword">define</span> MIN(a, b) a &lt; b ? a : b</span></div></pre></td></tr></table></figure><br>现在计算一下大小：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = <span class="keyword">MAX</span>(<span class="keyword">MIN</span>(<span class="number">6</span>, <span class="number">8</span>), <span class="number">7</span>);</div><div class="line">y = <span class="keyword">MAX</span>(<span class="number">7</span>, <span class="keyword">MIN</span>(<span class="number">8</span>, <span class="number">6</span>));</div></pre></td></tr></table></figure><br>结果是x = 6, y = 8。当时觉得很奇怪，为什么会是这个结果。自己把宏定义全部写进去，就发现原来是这样。</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">MAX</span>(<span class="keyword">MIN</span>(<span class="number">6</span>, <span class="number">8</span>), <span class="number">7</span>) 等价于 <span class="number">6</span> <span class="subst">&lt;</span> <span class="number">8</span> <span class="subst">?</span> <span class="number">6</span> : <span class="number">8</span> <span class="subst">&gt;</span> <span class="number">7</span> <span class="subst">?</span> <span class="number">6</span> <span class="subst">&lt;</span> <span class="number">8</span> <span class="subst">?</span> <span class="number">6</span> : <span class="number">8</span> : <span class="number">7</span> <span class="subst">-&gt; </span><span class="number">1</span> <span class="subst">?</span> <span class="number">6</span> : <span class="number">1</span> <span class="subst">?</span> <span class="number">1</span> <span class="subst">?</span> <span class="number">6</span> : <span class="number">8</span> : <span class="number">7</span> <span class="subst">-&gt; </span><span class="number">6</span></div><div class="line"><span class="keyword">MAX</span>(<span class="number">7</span>, <span class="keyword">MIN</span>(<span class="number">8</span>, <span class="number">6</span>)) 等价于 <span class="number">7</span> <span class="subst">&gt;</span> <span class="number">8</span> <span class="subst">&lt;</span> <span class="number">6</span> <span class="subst">?</span> <span class="number">8</span> : <span class="number">6</span> <span class="subst">?</span> <span class="number">7</span> : <span class="number">8</span> <span class="subst">&lt;</span> <span class="number">6</span> <span class="subst">?</span> <span class="number">8</span> : <span class="number">6</span> <span class="subst">-&gt; </span><span class="number">1</span> <span class="subst">?</span> <span class="number">8</span> : <span class="number">6</span> <span class="subst">?</span> <span class="number">7</span> : <span class="number">0</span> <span class="subst">?</span> <span class="number">8</span> : <span class="number">6</span> <span class="subst">-&gt; </span><span class="number">8</span></div></pre></td></tr></table></figure><br>这里涉及到优先级的问题，因为&gt;,&lt;比?:的优先级要高，所以先计算完&gt;,&lt;才会算?:。所以调用宏定义时尽可能只输入一个数值，不要在传参数时进行计算。如果要这样做的话，就要在宏定义时加上括号，不过这样比较繁琐。<br>上几个月做笔试题时也遇到类似的题目，定义<code>#define year(a) a * 1000</code>，计算<code>year(1000+1)</code>的值。<br>结果是：2000，不是1001000。将1000+1代入到宏定义中就变成1000+1*1000了，所以说尽量不要在给宏定义传参数时进行计算，避免出现错误的结果。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Detail/">Detail</a>
+  </div>
+
+        
+		
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+     
+	 
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2014/08/03/字节对齐/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+<section id="comment">
+
+  <h1 class="title">留言</h1>
+
+ <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yeir"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yeir.me">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Detail/">Detail</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/Study/">Study</a><small>1</small></li>
+  
+    <li><a href="/categories/blog/">blog</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1852509044&verifier=c6fd2b80&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Yeir
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vim command | Yeir&#39;s blog</title>
+  <meta name="author" content="Yeir">
+  
+  <meta name="description" content="Keep move!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="vim command"/>
+  <meta property="og:site_name" content="Yeir&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.jpg" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Yeir&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yeir&#39;s blog</a></h1>
+  <h2><a href="/">Keep move!</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归案</a></li>
+    
+      <li><a href="">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-02T10:21:36.000Z"><a href="/2014/08/02/vim-command/">8月 2 2014</a></time>
+      
+      
+  
+    <h1 class="title">vim command</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Vim基本命令">Vim基本命令</h2>
+<h3 id="1-打开文件操作">1.打开文件操作</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim filename 打开文件</div><div class="line">vimdiff filenameA filenameB 比较编辑两个不同的文件</div></pre></td></tr></table></figure>
+
+<h3 id="2-存储及退出文件">2.存储及退出文件</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">:wq</span> 存文件，并且退出vi</div><div class="line">zz 存文件，并且退出vi(直接输入)</div><div class="line"><span class="symbol">:w</span> 保存文件</div><div class="line"><span class="symbol">:q</span> 退出文件</div><div class="line"><span class="symbol">:w</span> filename 写入指定文件</div><div class="line"><span class="symbol">:e</span> filename 打开文件filename进行编辑(相当于退出当前的并打开另外一个文件)</div><div class="line"><span class="symbol">:X</span> 文件加密，会提示输入密码</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="3-移动">3.移动</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">h 光标向下移动</div><div class="line">j 光标向下移动</div><div class="line">k 光标向上移动</div><div class="line">l 光标向右移动</div><div class="line">w 光标跳到下个单词的第一个字母</div><div class="line">W 移动到下一个单词的开头，忽略标点符号</div><div class="line">b 光标回到上个单词的第一个字母</div><div class="line">B 移动到前一个的开头，忽略标点符号</div><div class="line">e 光标跳到下个单词的最后一个字母</div><div class="line"><span class="keyword">E</span> 移到下一个字母的结尾，忽略标点符号</div><div class="line">zt 把当前行置于屏幕顶端</div><div class="line">zb 把当前行置于屏幕底端</div><div class="line"><span class="number">50</span>% 光标定位在文件的中间</div><div class="line">Ctrl+u 向上翻到当前屏幕的一半</div><div class="line">Ctrl+d 向下翻到当前屏幕的一半</div><div class="line">Ctrl+b 向上翻页</div><div class="line">Ctrl+f 向下翻页</div><div class="line">CTRL+<span class="keyword">O</span> 回到前一个位置</div></pre></td></tr></table></figure>
+
+<h3 id="4-删除">4.删除</h3>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">nx 删除由光标位置起始后的n个字符</div><div class="line">nX 删除由光标位置起始前的n个字符</div><div class="line">d<span class="number">0</span> 删除当行光标位置后的字符</div><div class="line">d<span class="variable">$ </span>删除当行光标位置前的字符</div><div class="line">ndw 删除光标处开始及其后的n-<span class="number">1</span>个字</div><div class="line">ndb 删除光标处开始及其前的n-<span class="number">1</span>个字</div><div class="line">ndd 删除当前行及其后n-<span class="number">1</span>行</div></pre></td></tr></table></figure>
+
+<h3 id="5-其他">5.其他</h3>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nyyp 复制当行及后n-1行</div><div class="line">u 撤销</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Linux/">Linux</a>
+  </div>
+
+        
+		
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+     
+	 
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/08/03/字节对齐/" class="alignleft prev" >上一页</a>
+    
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+<section id="comment">
+
+  <h1 class="title">留言</h1>
+
+ <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yeir"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yeir.me">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Detail/">Detail</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/Study/">Study</a><small>1</small></li>
+  
+    <li><a href="/categories/blog/">blog</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1852509044&verifier=c6fd2b80&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Yeir
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

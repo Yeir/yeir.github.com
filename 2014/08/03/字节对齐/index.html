@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>字节对齐 | Yeir&#39;s blog</title>
+  <meta name="author" content="Yeir">
+  
+  <meta name="description" content="Keep move!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="字节对齐"/>
+  <meta property="og:site_name" content="Yeir&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.jpg" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Yeir&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yeir&#39;s blog</a></h1>
+  <h2><a href="/">Keep move!</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归案</a></li>
+    
+      <li><a href="">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-02T23:47:52.000Z"><a href="/2014/08/03/字节对齐/">8月 3 2014</a></time>
+      
+      
+  
+    <h1 class="title">字节对齐</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="1-字节对齐的解释">1.字节对齐的解释</h3>
+<p>现代计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。（来自百度）</p>
+<h3 id="2-字节对齐的作用">2.字节对齐的作用</h3>
+<p>字节对齐的作用不仅是便于cpu快速访问，同时合理的利用字节对齐可以有效地节省存储空间。</p>
+<h3 id="3-字节对齐的更改">3.字节对齐的更改</h3>
+<p>使用伪指令#pragma pack(n)，C编译器将按照n个字节对齐。<br>使用伪指令#pragma pack()，取消自定义字节对齐方式。<br>1字节对齐：attribute((packed))。</p>
+<h4 id="下面来看看例子：">下面来看看例子：</h4>
+<p><a id="more"></a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> example</div><div class="line">{</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">struct</span> example1</div><div class="line">{</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">struct</span> example2</div><div class="line">{</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">char</span> *j;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">struct</span> example3</div><div class="line">{</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">short</span> *i;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">};</div><div class="line"></div><div class="line">运行结果：</div><div class="line"><span class="keyword">sizeof</span>(example):<span class="number">8</span></div><div class="line"><span class="keyword">sizeof</span>(example1):<span class="number">12</span></div><div class="line"><span class="keyword">sizeof</span>(example2):<span class="number">12</span></div><div class="line"><span class="keyword">sizeof</span>(example3):<span class="number">12</span></div></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#<span class="keyword">pragma</span> pack(2)</span></div><div class="line"><span class="keyword">struct</span> example</div><div class="line">{</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">};</div><div class="line"><span class="preprocessor">#<span class="keyword">pragma</span> pack()</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> example1</div><div class="line">{</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">}__attribute__((packed));</div><div class="line"></div><div class="line"><span class="preprocessor">#<span class="keyword">pragma</span> pack(2)</span></div><div class="line"><span class="keyword">struct</span> example2</div><div class="line">{</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">short</span> i;</div><div class="line">    <span class="keyword">char</span> *j;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">struct</span> example3</div><div class="line">{</div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">short</span> *i;</div><div class="line">    <span class="keyword">char</span> j;</div><div class="line">};</div><div class="line"></div><div class="line">运行结果：</div><div class="line"><span class="keyword">sizeof</span>(example):<span class="number">8</span></div><div class="line"><span class="keyword">sizeof</span>(example1):<span class="number">7</span></div><div class="line"><span class="keyword">sizeof</span>(example2):<span class="number">10</span></div><div class="line"><span class="keyword">sizeof</span>(example3):<span class="number">10</span></div></pre></td></tr></table></figure>
+
+<p>这和我一开始自己算的不一样，因为我没有字节对齐这个概念。先来算算上面的结果，32位系统默认是4个字节对齐。<br>后面的为作了字节对齐的运行结果。</p>
+<h3 id="判断">判断</h3>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">example:</div><div class="line"><span class="keyword">short</span> i;占<span class="number">2</span>个字节。如果一行有<span class="number">4</span>个字节可用，共用了<span class="number">2</span>个字节。</div><div class="line"><span class="keyword">char</span> j;占<span class="number">1</span>个字节。如果一行有<span class="number">4</span>个字节可用，共用了<span class="number">3</span>个字节。</div><div class="line"><span class="keyword">int</span> x;占<span class="number">4</span>个字节。第一行只有<span class="number">1</span>个字节可用，所以只有从第二行开始存<span class="number">4</span>个字节。</div></pre></td></tr></table></figure><br><img src="/image/1.png" alt=""></p>
+<p>其实用了字节对齐后，可以这样说，n字节对齐，用一个整体来包含n个字节，每个一个变量只能一个整体内或者从新用一个整体后接n个整体来存储。</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">example2:</div><div class="line"><span class="keyword">int</span> x;</div><div class="line"><span class="keyword">short</span> i;</div><div class="line"><span class="keyword">char</span> *j;</div></pre></td></tr></table></figure><br><img src="/image/2.png" alt=""></p>
+<p>在协议栈中，都会用到字节对齐，不然在传输后获取缓冲区数据时会出现一些bug。比如：上面的<code>struct example1</code>结构体，客户端将<code>example</code>发到服务器上（默认4字节对齐），服务器存到<code>void* buffer</code>中，但是buffer中有些内存中没有数据，不是连续的数据，很容易出现问题。</p>
+<p><img src="/image/2.png" alt=""><br>所以在编程时，应要重视字节对齐，尽量习惯用上字节对齐，可以减小内存空间，也可以避免一些不必要的问题。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Study/">Study</a>
+  </div>
+
+        
+		
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+     
+	 
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/09/01/编程细节(一)/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/08/02/vim-command/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+<section id="comment">
+
+  <h1 class="title">留言</h1>
+
+ <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yeir"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yeir.me">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Detail/">Detail</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/Study/">Study</a><small>1</small></li>
+  
+    <li><a href="/categories/blog/">blog</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1852509044&verifier=c6fd2b80&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Yeir
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
